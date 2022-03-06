@@ -1,0 +1,141 @@
+<h1 style="text-align: center;">Cap flight</h1>
+<form [formGroup]="flightform">
+  <div class = 'row'>
+    <div>
+      <label>Full Name : </label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="fullName"
+        placeholder="Enter your full-name"
+      />
+    </div>
+  </div>
+<!-- ----------------------------------------------------------------------------------------------------------------------------->
+  <div class = 'row'>
+    <div class = 'col'>
+    <label>From : </label>
+      <select class = "form-select" formControlName = "from">
+        <option value="" selected>To</option>
+        <option value="Ukraine">Ukraine</option>
+        <option value="Japan">Japan</option>
+        <option value="Korea">Korea</option>
+      </select>
+    </div>
+    <div class = 'col'>
+      <label>To : </label>
+        <select class="form-select" formControlName="to">
+          <option value="" selected>To</option>
+          <option value="Ukraine">Ukraine</option>
+          <option value="Japan">Japan</option>
+          <option value="Korea">Korea</option>
+        </select>
+      </div>
+  </div>
+<!-- ---------------------------------------------------------------------------------------------------------------------------->
+  <div class = 'row'>
+    <div class = 'col'>
+      <label>Trip Type </label>
+      <div class="line">
+        <input class="col-md-1 form-check-input  m-2" type="radio" id="Oneway" name="type" value="One way" formControlName="type">
+        <label class="form-check-label  m-1" for="Oneway">One way</label>
+        <input class="col-md-1 form-check-input m-2" type="radio" id="Return" name="type" value="Return" formControlName="type">
+        <label class="form-check-label  m-1" for="Return">Return</label>
+        </div>
+      </div>
+      <div class='col'>
+        <label>Adults</label>
+        <input
+          type="date"
+          class="form-control"
+          formControlName="departure"
+          placeholder="Enter your full-name"
+        />
+    </div>
+    <div class='col'>
+      <label>Adults</label>
+      <input
+        type="date"
+        class="form-control"
+        formControlName="arrival"
+        placeholder="Enter your full-name"
+      />
+  </div>
+  </div>
+
+<!-- ---------------------------------------------------------------------------------------------------------------------------->
+
+  <div class = 'row'>
+      <div class = 'col'>
+        <label>Adults</label>
+        <input
+          type="number"
+          class="form-control"
+          formControlName="adults"
+          placeholder="Enter a number"
+          min="0"
+        />
+      </div>
+      <div class = 'col'>
+        <label>Children</label>
+        <input
+          type="number"
+          class="form-control"
+          formControlName="children"
+          placeholder="Enter a number"
+          min="0"
+        />
+      </div>
+      <div class = 'col'>
+        <label>Infants</label>
+        <input
+          type="number"
+          class="form-control"
+          formControlName="infants"
+          placeholder="Enter a number"
+          min="0"
+        />
+      </div>
+    </div>
+<!-- --------------------------------------------------------------------------------------------------------------------------->
+  <div class = 'row'>
+      <button
+        class="btn-lg btn-block btn-primary"
+        type="submit"
+        (click)="OnSubmit(flightform.value)"
+
+      >
+        Submit
+      </button>
+    </div>
+</form>
+<!-- <div>{{flightform.value | json}}</div> -->
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Full Name</th>
+      <th scope="col">From</th>
+      <th scope="col">To</th>
+      <th scope="col">Type</th>
+      <th scope="col">Departure</th>
+      <th scope="col">Arrival</th>
+      <th scope="col">Adults</th>
+      <th scope="col">Children</th>
+      <th scope="col">Infants</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let f of flightData">
+      <td>{{ f.fullName }}</td>
+      <td>{{ f.from }}</td>
+      <td>{{ f.to }}</td>
+      <td>{{ f.type }}</td>
+      <td>{{ f.departure | date: "d MMM y" }}</td>
+      <td>{{ f.arrival | date: "d MMM y" }}</td>
+      <td>{{ f.adults }}</td>
+      <td>{{ f.children }}</td>
+      <td>{{ f.infants }}</td>
+    </tr>
+  </tbody>
+</table>
